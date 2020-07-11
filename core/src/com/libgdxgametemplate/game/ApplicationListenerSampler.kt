@@ -8,10 +8,16 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.utils.Logger
+import com.libgdxgametemplate.game.utils.logger
 
 class ApplicationListenerSampler : ApplicationListener {
 
-    private val log = Logger(ApplicationListenerSampler::class.java.simpleName, Logger.DEBUG)
+    companion object {
+        @JvmStatic
+        private val log = logger<ApplicationListenerSampler>()
+    }
+
+
     private var renderInterrupted = true
 
     // Used to render the game elements (at 60fps)
