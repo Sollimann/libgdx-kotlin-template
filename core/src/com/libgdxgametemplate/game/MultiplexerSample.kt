@@ -28,7 +28,7 @@ class MultiplexerSample : ApplicationAdapter() {
             }
         }
 
-        val secondProcessor =  object: InputAdapter() {
+        val secondProcessor = object : InputAdapter() {
             override fun keyDown(keycode: Int): Boolean {
                 log.debug("second keyDown keycode= $keycode")
                 return true

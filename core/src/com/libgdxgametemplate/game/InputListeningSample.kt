@@ -40,6 +40,7 @@ class InputListeningSample : ApplicationAdapter(), InputProcessor {
         Gdx.input.inputProcessor = this
     }
 
+
     override fun resize(width: Int, height: Int) {
         viewport.update(width, height, true)
     }
@@ -59,10 +60,10 @@ class InputListeningSample : ApplicationAdapter(), InputProcessor {
 
     // mouse / touch x/y
     private fun draw() {
-        for(i in 0 until messages.size) {
+        for (i in 0 until messages.size) {
             font.draw(batch, messages[i],
-            20f,
-            720f-40f * i
+                    20f,
+                    720f - 40f * i
             )
         }
     }
@@ -70,7 +71,7 @@ class InputListeningSample : ApplicationAdapter(), InputProcessor {
     private fun addMessage(message: String) {
         messages.add(message)
 
-        if(messages.size > maxMessageCount) {
+        if (messages.size > maxMessageCount) {
             messages.removeIndex(0)
         }
     }
