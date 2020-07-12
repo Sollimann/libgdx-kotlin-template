@@ -1,17 +1,21 @@
 
 ## Setup in IntelliJ
 
-###### 1. Choose working directory
+###### 1. Open build.gradle
 
-In edit configuration, choose working directory
+In IntelliJ, configure the project by opening the project from the `build.gradle` file in the root directory.
+
+###### 2. Choose working directory
+
+In edit configuration, choose working directory:
 
 `/*your path*/libgdx/core/assets`
 
-###### 2. Choose classpath of module
+###### 3. Choose classpath of module
 
 `libgdx.desktop.main`
 
 
-###### 3. Choose JRE version
+###### 4. Choose JRE version
 
 `Java version 1.8`
