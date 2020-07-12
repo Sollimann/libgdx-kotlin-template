@@ -2,7 +2,7 @@ package com.libgdxgametemplate.game.desktop
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
-import com.libgdxgametemplate.game.InputPollingSample
+import com.libgdxgametemplate.game.InputListeningSample
 
 object DesktopLauncherInputPolling {
     @JvmStatic
@@ -10,6 +10,6 @@ object DesktopLauncherInputPolling {
         val config = LwjglApplicationConfiguration()
         config.width=1080
         config.height=720
-        LwjglApplication(InputPollingSample(), config)
+        LwjglApplication(InputListeningSample(), config)
     }
 }

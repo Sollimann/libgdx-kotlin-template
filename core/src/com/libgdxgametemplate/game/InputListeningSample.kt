@@ -3,16 +3,17 @@ package com.libgdxgametemplate.game
 import com.badlogic.gdx.Application
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Input
+import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.Viewport
+import com.libgdxgametemplate.game.utils.GdxArray
 import com.libgdxgametemplate.game.utils.logger
 
-class InputListeningSample : ApplicationAdapter() {
+class InputListeningSample : ApplicationAdapter(), InputProcessor {
     companion object {
         @JvmStatic
         private val log = logger<InputListeningSample>()
@@ -23,6 +24,9 @@ class InputListeningSample : ApplicationAdapter() {
     lateinit var batch: SpriteBatch
     lateinit var font: BitmapFont
 
+    private val maxMessageCount = 15
+    private val messages = GdxArray<String>()
+
     override fun create() {
         Gdx.app.logLevel = Application.LOG_DEBUG
 
@@ -32,6 +36,8 @@ class InputListeningSample : ApplicationAdapter() {
         viewport = FitViewport(1080f, 720f, camera)
         batch = SpriteBatch()
         font = BitmapFont(Gdx.files.internal("fonts/oswald-32.fnt"))
+
+        Gdx.input.inputProcessor = this
     }
 
     override fun resize(width: Int, height: Int) {
@@ -53,38 +59,81 @@ class InputListeningSample : ApplicationAdapter() {
 
     // mouse / touch x/y
     private fun draw() {
-        val mouseX = Gdx.input.x
-        val mouseY = Gdx.input.y
+        for(i in 0 until messages.size) {
+            font.draw(batch, messages[i],
+            20f,
+            720f-40f * i
+            )
+        }
+    }
 
-        val leftPressed = Gdx.input.isButtonPressed(Input.Buttons.LEFT)
-        val rightPressed = Gdx.input.isButtonPressed(Input.Buttons.RIGHT)
+    private fun addMessage(message: String) {
+        messages.add(message)
 
-        font.draw(batch, "Mouse x=$mouseX y=$mouseY ", 20f, 720f-20f)
-
-        val leftPressedString = if(leftPressed) "Left button pressed" else "Left button not pressed"
-        font.draw(batch, leftPressedString, 20f, 720f-50f)
-
-        val rightPressedString = if(rightPressed) "Right button pressed" else "Right button not pressed"
-        font.draw(batch, rightPressedString, 20f, 720f-80f)
-
-        // keys
-        val wPressed = Gdx.input.isKeyPressed(Input.Keys.W)
-        val sPressed = Gdx.input.isKeyPressed(Input.Keys.S)
-
-        font.draw(batch,
-            if (wPressed) "W is pressed" else "W is not pressed",
-                20f, 720f - 140f
-                )
-
-        font.draw(batch,
-                if (sPressed) "S is pressed" else "S is not pressed",
-                20f, 720f - 180f
-        )
+        if(messages.size > maxMessageCount) {
+            messages.removeIndex(0)
+        }
     }
 
     override fun dispose() {
         batch.dispose()
         font.dispose()
+    }
+
+    override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
+        val message = "touchUp screenX= $screenX, $screenY"
+        log.debug(message)
+        addMessage(message)
+        return true
+    }
+
+    override fun mouseMoved(screenX: Int, screenY: Int): Boolean {
+        val message = "mouseMoved screenX= $screenX, $screenY"
+        log.debug(message)
+        addMessage(message)
+        return true
+    }
+
+    override fun keyTyped(character: Char): Boolean {
+        val message = "keyTyped character= $character"
+        log.debug(message)
+        addMessage(message)
+        return true
+    }
+
+    override fun scrolled(amount: Int): Boolean {
+        val message = "scrolled amount=$amount"
+        log.debug(message)
+        addMessage(message)
+        return true
+    }
+
+    override fun keyUp(keycode: Int): Boolean {
+        val message = "keyUp keycode= $keycode"
+        log.debug(message)
+        addMessage(message)
+        return true
+    }
+
+    override fun touchDragged(screenX: Int, screenY: Int, pointer: Int): Boolean {
+        val message = "touchDragged screenX= $screenX, $screenY"
+        log.debug(message)
+        addMessage(message)
+        return true
+    }
+
+    override fun keyDown(keycode: Int): Boolean {
+        val message = "keyDown keycode= $keycode"
+        log.debug(message)
+        addMessage(message)
+        return true
+    }
+
+    override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
+        val message = "touchDown screenX= $screenX, $screenY"
+        log.debug(message)
+        addMessage(message)
+        return true
     }
 
 }
