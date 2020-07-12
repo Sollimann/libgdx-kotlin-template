@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.libgdxgametemplate.game.utils.GdxArray
 import com.libgdxgametemplate.game.utils.logger
+import com.libgdxgametemplate.game.utils.toInternalFile
 
 class InputListeningSample : ApplicationAdapter(), InputProcessor {
     companion object {
@@ -35,7 +36,7 @@ class InputListeningSample : ApplicationAdapter(), InputProcessor {
         camera = OrthographicCamera()
         viewport = FitViewport(1080f, 720f, camera)
         batch = SpriteBatch()
-        font = BitmapFont(Gdx.files.internal("fonts/oswald-32.fnt"))
+        font = BitmapFont("fonts/oswald-32.fnt".toInternalFile())
 
         Gdx.input.inputProcessor = this
     }

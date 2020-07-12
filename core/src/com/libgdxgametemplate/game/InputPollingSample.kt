@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.libgdxgametemplate.game.utils.logger
+import com.libgdxgametemplate.game.utils.toInternalFile
 
 class InputPollingSample : ApplicationAdapter() {
     companion object {
@@ -31,7 +32,7 @@ class InputPollingSample : ApplicationAdapter() {
         camera = OrthographicCamera()
         viewport = FitViewport(1080f, 720f, camera)
         batch = SpriteBatch()
-        font = BitmapFont(Gdx.files.internal("fonts/oswald-32.fnt"))
+        font = BitmapFont("fonts/oswald-32.fnt".toInternalFile())
     }
 
     override fun resize(width: Int, height: Int) {
