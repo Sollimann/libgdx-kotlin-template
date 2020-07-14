@@ -114,7 +114,7 @@ class GdxSamplerLauncher : JFrame() {
         }
 
         if(!name.isNullOrBlank()) {
-            val sample = SampleFactory.newSample(name!!)
+            val sample = SampleFactory.newSample(name)
             lwjglAWTCanvas = LwjglAWTCanvas(sample)
             lwjglAWTCanvas?.canvas?.size = Dimension(canvasWidth, windowHeight)
             contentPane.add(lwjglAWTCanvas?.canvas, BorderLayout.CENTER)
