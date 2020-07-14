@@ -1,11 +1,11 @@
-package com.libgdxgametemplate.game
+package com.libgdxgametemplate.game.samples
 
 import com.badlogic.gdx.Application
-import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
+import com.libgdxgametemplate.game.common.SampleBase
 import com.libgdxgametemplate.game.utils.logger
 
-class ModuleInfoSample : ApplicationAdapter() {
+class ModuleInfoSample : SampleBase() {
 
     companion object {
         @JvmStatic

@@ -1,12 +1,12 @@
-package com.libgdxgametemplate.game
+package com.libgdxgametemplate.game.samples
 
-import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.libgdxgametemplate.game.common.SampleBase
 
-class LibgdxGame : ApplicationAdapter() {
+class GdxGeneratedSample : SampleBase() {
     var batch: SpriteBatch? = null
     var img: Texture? = null
     override fun create() {

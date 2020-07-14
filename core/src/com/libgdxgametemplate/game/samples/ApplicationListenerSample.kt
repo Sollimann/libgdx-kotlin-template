@@ -1,20 +1,15 @@
-package com.libgdxgametemplate.game
+package com.libgdxgametemplate.game.samples
 
 import com.badlogic.gdx.Application
-import com.badlogic.gdx.ApplicationAdapter
-import com.badlogic.gdx.ApplicationListener
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.GL20
-import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.badlogic.gdx.utils.Logger
+import com.libgdxgametemplate.game.common.SampleBase
 import com.libgdxgametemplate.game.utils.logger
 
-class ApplicationListenerSampler : ApplicationListener {
+class ApplicationListenerSample : SampleBase() {
 
     companion object {
         @JvmStatic
-        private val log = logger<ApplicationListenerSampler>()
+        private val log = logger<ApplicationListenerSample>()
     }
 
 

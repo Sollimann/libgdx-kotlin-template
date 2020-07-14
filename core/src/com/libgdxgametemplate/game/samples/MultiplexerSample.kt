@@ -1,9 +1,13 @@
-package com.libgdxgametemplate.game
+package com.libgdxgametemplate.game.samples
 
-import com.badlogic.gdx.*
+import com.badlogic.gdx.Application
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.InputAdapter
+import com.badlogic.gdx.InputMultiplexer
+import com.libgdxgametemplate.game.common.SampleBase
 import com.libgdxgametemplate.game.utils.logger
 
-class MultiplexerSample : ApplicationAdapter() {
+class MultiplexerSample : SampleBase() {
 
     companion object {
         @JvmStatic

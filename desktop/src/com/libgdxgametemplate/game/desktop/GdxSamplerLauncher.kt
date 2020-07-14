@@ -1,8 +1,8 @@
 package com.libgdxgametemplate.game.desktop
 
-import com.badlogic.gdx.ApplicationListener
 import com.badlogic.gdx.backends.lwjgl.LwjglAWTCanvas
-import com.badlogic.gdx.utils.reflect.ClassReflection
+import com.libgdxgametemplate.game.common.SampleFactory
+import com.libgdxgametemplate.game.common.SampleInfos
 import java.awt.BorderLayout
 import java.awt.Dimension
 import java.awt.GridBagConstraints
@@ -41,7 +41,7 @@ class GdxSamplerLauncher : JFrame() {
             }
         })
 
-        //launchSample("com.libgdxgametemplate.game.InputPollingSample")
+        //launchSample("com.libgdxgametemplate.game.samples.InputPollingSample")
 
         // Tell window/jframe to resize and layout component
         pack()
@@ -60,7 +60,7 @@ class GdxSamplerLauncher : JFrame() {
             weighty = 1.0 // used to fill empty space
         }
 
-        sampleList = JList(arrayOf("com.libgdxgametemplate.game.InputPollingSample"))
+        sampleList = JList(SampleInfos.getSampleNames())
         sampleList.fixedCellWidth = cellWidth
         sampleList.selectionMode = ListSelectionModel.SINGLE_SELECTION
 
@@ -114,15 +114,12 @@ class GdxSamplerLauncher : JFrame() {
             contentPane.remove(lwjglAWTCanvas?.canvas)
         }
 
-        // Get class object by name
-        val sampleClass = ClassReflection.forName(name)
-
-        // Create new instance of sample class
-        val sample = ClassReflection.newInstance(sampleClass) as ApplicationListener
-
-        lwjglAWTCanvas = LwjglAWTCanvas(sample)
-        lwjglAWTCanvas?.canvas?.size = Dimension(canvasWidth, windowHeight)
-        contentPane.add(lwjglAWTCanvas?.canvas, BorderLayout.CENTER)
+        if (!name.isNullOrBlank()) {
+            val sample = SampleFactory.newSample(name!!)
+            lwjglAWTCanvas = LwjglAWTCanvas(sample)
+            lwjglAWTCanvas?.canvas?.size = Dimension(canvasWidth, windowHeight)
+            contentPane.add(lwjglAWTCanvas?.canvas, BorderLayout.CENTER)
+        }
         pack()
     }
 }

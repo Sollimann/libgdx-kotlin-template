@@ -1,7 +1,6 @@
-package com.libgdxgametemplate.game
+package com.libgdxgametemplate.game.samples
 
 import com.badlogic.gdx.Application
-import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.OrthographicCamera
@@ -10,11 +9,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.utils.reflect.ClassReflection
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.Viewport
+import com.libgdxgametemplate.game.common.SampleBase
 import com.libgdxgametemplate.game.utils.clearScreen
 import com.libgdxgametemplate.game.utils.logger
 import com.libgdxgametemplate.game.utils.toInternalFile
 
-class ReflectionSample : ApplicationAdapter() {
+class ReflectionSample : SampleBase() {
     companion object {
         @JvmStatic
         private val log = logger<ReflectionSample>()
