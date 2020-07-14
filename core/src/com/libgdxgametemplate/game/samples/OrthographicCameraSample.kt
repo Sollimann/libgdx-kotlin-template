@@ -3,16 +3,13 @@ package com.libgdxgametemplate.game.samples
 import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
-import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.libgdxgametemplate.game.common.SampleBase
-import com.libgdxgametemplate.game.utils.isKeyPressed
-import com.libgdxgametemplate.game.utils.logger
-import com.libgdxgametemplate.game.utils.toInternalFile
+import com.libgdxgametemplate.game.utils.*
 
 class OrthographicCameraSample : SampleBase() {
     companion object {
@@ -48,16 +45,11 @@ class OrthographicCameraSample : SampleBase() {
 
     // Clear screen
     override fun render() {
-        Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
+        clearScreen()
         queryInput()
 
         batch.projectionMatrix = camera.combined
-        batch.begin()
-
-        draw()
-
-        batch.end()
+        batch.use {draw()}
     }
 
     private fun queryInput() {

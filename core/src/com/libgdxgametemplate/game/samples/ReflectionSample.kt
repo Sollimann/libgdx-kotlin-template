@@ -13,6 +13,7 @@ import com.libgdxgametemplate.game.common.SampleBase
 import com.libgdxgametemplate.game.utils.clearScreen
 import com.libgdxgametemplate.game.utils.logger
 import com.libgdxgametemplate.game.utils.toInternalFile
+import com.libgdxgametemplate.game.utils.use
 
 class ReflectionSample : SampleBase() {
     companion object {
@@ -49,11 +50,7 @@ class ReflectionSample : SampleBase() {
         clearScreen()
 
         batch.projectionMatrix = camera.combined
-        batch.begin()
-
-        draw()
-
-        batch.end()
+        batch.use { draw() }
     }
 
     // mouse / touch x/y
