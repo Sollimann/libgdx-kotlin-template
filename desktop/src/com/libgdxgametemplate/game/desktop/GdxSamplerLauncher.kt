@@ -24,12 +24,11 @@ class GdxSamplerLauncher : JFrame() {
     private var lwjglAWTCanvas: LwjglAWTCanvas? = null
     private lateinit var sampleList: JList<String>
 
-
     init {
         title = GdxSamplerLauncher::class.java.simpleName
         minimumSize = windowSize
         size = windowSize
-        isResizable = false
+//        isResizable = false
         defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
 
         createControlPanel()
@@ -41,9 +40,9 @@ class GdxSamplerLauncher : JFrame() {
             }
         })
 
-        //launchSample("com.libgdxgametemplate.game.samples.InputPollingSample")
+        // launchSample("com.learnprogrammingacademy.sampler.samples.InputPollingSample")
 
-        // Tell window/jframe to resize and layout component
+        // tell window/jframe to resize and layout component
         pack()
         isVisible = true
     }
@@ -52,9 +51,9 @@ class GdxSamplerLauncher : JFrame() {
         val controlPanel = JPanel(GridBagLayout())
         val c = GridBagConstraints()
 
-        //scrollpane
+        // scrollpane
         c.apply {
-            gridx = 0 // Column
+            gridx = 0 // column
             gridy = 0 // row
             fill = GridBagConstraints.VERTICAL // fill vertically
             weighty = 1.0 // used to fill empty space
@@ -64,11 +63,11 @@ class GdxSamplerLauncher : JFrame() {
         sampleList.fixedCellWidth = cellWidth
         sampleList.selectionMode = ListSelectionModel.SINGLE_SELECTION
 
-        // Add double click to launch sample
+        // add double click to launch sample
         sampleList.addMouseListener(object:MouseAdapter() {
             override fun mouseClicked(mouseEvent: MouseEvent?) {
                 if(mouseEvent?.clickCount == 2) {
-                    launchSelectSample()
+                    launchSelectedSample()
                 }
             }
         })
@@ -78,26 +77,26 @@ class GdxSamplerLauncher : JFrame() {
 
         // button
         c.apply {
-            gridx = 0 // col
+            gridx = 0 // column
             gridy = 1 // row
             fill = GridBagConstraints.HORIZONTAL
             weighty = 0.0
         }
 
         val launchButton = JButton("Launch Sample")
-        launchButton.addActionListener { launchSelectSample() }
+        launchButton.addActionListener { launchSelectedSample() }
 
         controlPanel.add(launchButton, c)
 
-        // add to jFrame
+        // add to jframe
         contentPane.add(controlPanel, BorderLayout.WEST)
     }
 
-    private fun launchSelectSample() {
+    private fun launchSelectedSample() {
         val sampleName : String? = sampleList.selectedValue
 
-        if (sampleName.isNullOrBlank()) {
-            println("sample name is null or blank. Can't launch")
+        if(sampleName.isNullOrBlank()) {
+            println("sample name is null or blank cant launch")
             return
         }
 
@@ -107,19 +106,20 @@ class GdxSamplerLauncher : JFrame() {
     private fun launchSample(name: String?) {
         println("launching name= $name")
 
-        // Cleanup before running new sample
+        // cleanup before running new sample
         lwjglAWTCanvas?.stop()
 
         if (lwjglAWTCanvas != null) {
             contentPane.remove(lwjglAWTCanvas?.canvas)
         }
 
-        if (!name.isNullOrBlank()) {
+        if(!name.isNullOrBlank()) {
             val sample = SampleFactory.newSample(name!!)
             lwjglAWTCanvas = LwjglAWTCanvas(sample)
             lwjglAWTCanvas?.canvas?.size = Dimension(canvasWidth, windowHeight)
             contentPane.add(lwjglAWTCanvas?.canvas, BorderLayout.CENTER)
         }
+
         pack()
     }
 }
@@ -132,7 +132,7 @@ fun main(args: Array<String>) {
             GdxSamplerLauncher()
         }
     })
-     */
-    SwingUtilities.invokeLater { GdxSamplerLauncher() }
+    */
 
+    SwingUtilities.invokeLater { GdxSamplerLauncher() }
 }
