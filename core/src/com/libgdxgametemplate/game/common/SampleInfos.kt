@@ -12,20 +12,9 @@ object SampleInfos {
             SampleInfo(ModuleInfoSample::class.java),
             SampleInfo(MultiplexerSample::class.java),
             SampleInfo(ReflectionSample::class.java),
+            SampleInfo(ViewportSample::class.java),
             SampleInfo(OrthographicCameraSample::class.java)
     )
-
-    /*
-    fun getSampleNames() : Array<String> {
-        val names = arrayListOf<String>()
-
-        allSamples.forEach{names.add(it.name)}
-
-        names.sort()
-
-        return names.toTypedArray()
-    }
-     */
 
     fun getSampleNames() = allSamples.associateBy { it.name }.keys.toList().sorted().toTypedArray()
 
