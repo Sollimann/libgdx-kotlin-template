@@ -46,6 +46,54 @@ class ShapeRendererSample : SampleBase() {
         if(drawGrid) {
             drawGrid()
         }
+
+        if(drawCircles){
+            drawCircles()
+        }
+
+        if(drawRectangles){
+            drawRectangles()
+        }
+
+        if (drawPoints){
+            drawPoints()
+        }
+    }
+
+    private fun drawPoints(){
+        renderer.begin(ShapeRenderer.ShapeType.Filled)
+        renderer.color = Color.MAGENTA
+
+        renderer.point(-5f, 0f, 0f)
+        renderer.point(5f, -3f, 0f)
+        renderer.point(8f, 6f, 1f)
+        renderer.point(8f, 6f, 1f)
+
+        renderer.end()
+
+        renderer.begin(ShapeRenderer.ShapeType.Line)
+        renderer.x(-10f, 0f, 0.25f)
+        renderer.end()
+    }
+
+    private fun drawRectangles(){
+        renderer.begin(ShapeRenderer.ShapeType.Filled)
+        renderer.color = Color.BLUE
+
+        renderer.rect(-8f, 4f, 4f, 2f)
+        renderer.rect(-11f, 3f, 1f, 5f)
+
+        renderer.end()
+    }
+
+    private fun drawCircles(){
+        renderer.begin(ShapeRenderer.ShapeType.Filled)
+        renderer.color = Color.GREEN
+
+        renderer.circle(2f, 2f, 2f, 30)
+        renderer.circle(-5f, -5f, 1f)
+
+        renderer.end()
     }
 
     private fun drawGrid() {
