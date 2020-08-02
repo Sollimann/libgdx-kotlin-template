@@ -14,7 +14,8 @@ object SampleInfos {
             SampleInfo(ReflectionSample::class.java),
             SampleInfo(ViewportSample::class.java),
             SampleInfo(SpriteBatchSample::class.java),
-            SampleInfo(OrthographicCameraSample::class.java)
+            SampleInfo(OrthographicCameraSample::class.java),
+            SampleInfo(ShapeRendererSample::class.java)
     )
 
     fun getSampleNames() = allSamples.associateBy { it.name }.keys.toList().sorted().toTypedArray()
